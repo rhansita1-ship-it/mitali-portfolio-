@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitali Rana ✡ Graphic Designer</title>
+<style>
+/* ============================================
+   MITALI RANA — PORTFOLIO
+   Design tokens: quirky editorial / zine-collage
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Caveat:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+  /* palette — Artcoast trend palette, locked to brief */
+  --cream:       #F6EFE2;
+  --paper:       #FBF6EC;
+  --ink:         #241C14;
+  --pink:        #DBA0B2;
+  --pink-deep:   #C5798F;
+  --green:       #8BA347;
+  --green-deep:  #6C8236;
+  --orange:      #E66946;
+  --mint:        #C5DBD5;
+  --mint-deep:   #A9C9C1;
+
+  --font-display: 'Unbounded', sans-serif;
+  --font-script:  'Caveat', cursive;
+  --font-body:    'Space Grotesk', sans-serif;
+
+  --radius: 6px;
+  --border: 2.5px solid var(--ink);
+  --shadow-hard: 6px 6px 0 var(--ink);
+  --shadow-soft: 8px 10px 24px rgba(36,28,20,0.12);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+ul{ list-style:none; margin:0; padding:0; }
+h1,h2,h3,h4{ font-family: var(--font-display); margin:0; line-height:1.05; }
+p{ margin:0; }
+
+/* subtle grain / paper texture overlay */
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  pointer-events:none;
+  z-index: 500;
+  opacity: 0.05;
+  background-image: radial-gradient(circle, var(--ink) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+}
+
+:focus-visible{
+  outline: 3px dashed var(--orange);
+  outline-offset: 3px;
+}
+
+.wrap{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ============================================
+   MASTHEAD / NAV — styled like a zine cover
+   ============================================ */
+.masthead{
+  position: sticky;
+  top:0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: var(--border);
+}
+.masthead-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.brandmark{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family: var(--font-display);
+  font-weight:800;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+.brandmark .stamp{
+  width: 40px; height:40px;
+  border-radius:50%;
+  border: 2px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  transform: rotate(-8deg);
+  background: var(--pink);
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  flex-shrink:0;
+}
+.issue-tag{
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity:0.6;
+  display:block;
+  font-weight:600;
+}
+.navlinks{
+  display:flex;
+  gap: 6px;
+  align-items:center;
+}
+.navlinks a{
+  font-family: var(--font-body);
+  font-weight:600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: all .18s ease;
+  white-space:nowrap;
+}
+.navlinks a:hover{
+  border-color: var(--ink);
+  background: var(--mint);
+}
+.navlinks a.active{
+  border-color: var(--ink);
+  background: var(--orange);
+  color: var(--paper);
+}
+.nav-toggle{
+  display:none;
+  background:none; border: 2px solid var(--ink); border-radius: 8px;
+  width:42px; height:42px;
+  font-family: var(--font-display);
+  cursor:pointer;
+}
+
+@media (max-width: 760px){
+  .nav-toggle{ display:block; }
+  .navlinks{
+    position:absolute;
+    top: 100%;
+    left:0; right:0;
+    background: var(--cream);
+    flex-direction:column;
+    align-items:stretch;
+    border-bottom: var(--border);
+    padding: 10px 20px 18px;
+    display:none;
+  }
+  .navlinks.open{ display:flex; }
+  .navlinks a{ text-align:center; }
+}
+
+/* ============================================
+   TORN PAPER DIVIDER
+   ============================================ */
+.torn{
+  width:100%;
+  height: 34px;
+  display:block;
+  margin-top:-1px;
+}
+.torn-cream-to-mint{ fill:var(--mint); }
+.torn-mint-to-cream{ fill:var(--cream); }
+.torn-cream-to-pink{ fill:var(--pink); }
+.torn-pink-to-cream{ fill:var(--cream); }
+.torn-cream-to-ink{ fill:var(--ink); }
+.torn-ink-to-cream{ fill:var(--cream); }
+.torn-cream-to-orange{ fill: var(--orange); }
+.torn-orange-to-cream{ fill: var(--cream); }
+
+/* ============================================
+   BUTTONS / CHIPS
+   ============================================ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-body);
+  font-weight:700;
+  font-size:0.95rem;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: var(--border);
+  background: var(--orange);
+  color: var(--paper);
+  box-shadow: var(--shadow-hard);
+  transition: transform .15s ease, box-shadow .15s ease;
+  cursor:pointer;
+}
+.btn:hover{ transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--ink); }
+.btn.alt{ background: var(--paper); color: var(--ink); }
+.btn.green{ background: var(--green); color: var(--paper); }
+
+.chip{
+  display:inline-block;
+  font-family: var(--font-body);
+  font-weight:600;
+  font-size: 0.85rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  transform: rotate(var(--r, -2deg));
+  margin: 5px;
+}
+
+/* ============================================
+   POLAROID / STICKER PHOTO FRAME
+   ============================================ */
+.polaroid{
+  background: var(--paper);
+  padding: 12px 12px 46px;
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(var(--r, -3deg));
+  position:relative;
+}
+.polaroid img{ width:100%; height:100%; object-fit:cover; }
+.polaroid .cap{
+  position:absolute;
+  bottom:10px; left:14px; right:14px;
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.tape{
+  position:absolute;
+  width: 70px; height: 26px;
+  background: rgba(219,160,178,0.55);
+  border: 1px solid rgba(36,28,20,0.25);
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* ============================================
+   SECTION LABEL (eyebrow)
+   ============================================ */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family: var(--font-body);
+  font-weight:700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.eyebrow::before{
+  content:"✦";
+  color: var(--orange);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 0 30px;
+  margin-top: 0;
+}
+footer .foot-inner{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 30px;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+footer h3{
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+footer .foot-links{
+  display:flex;
+  gap: 22px;
+  flex-wrap:wrap;
+}
+footer .foot-links a{
+  font-weight:600;
+  border-bottom: 2px solid var(--pink);
+  padding-bottom:2px;
+}
+footer .foot-links a:hover{ color: var(--pink); }
+.foot-bottom{
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.8rem;
+  opacity:0.65;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.text-script{ font-family: var(--font-script); }
+.dot-star{ color: var(--orange); }
+.rot-l{ transform: rotate(-3deg); }
+.rot-r{ transform: rotate(3deg); }
+
+.section{ padding: 84px 0; position:relative; }
+.section.tight{ padding: 56px 0; }
+.bg-mint{ background: var(--mint); }
+.bg-pink{ background: var(--pink); }
+.bg-ink{ background: var(--ink); color: var(--paper); }
+.bg-orange{ background: var(--orange); color: var(--paper); }
+.bg-cream{ background: var(--cream); }
+
+.underline-wobble{
+  position:relative;
+  white-space:nowrap;
+}
+
+@media (max-width: 640px){
+  .section{ padding: 56px 0; }
+  body{ font-size: 16px; }
+}
+
+/* ============================================
+   HOME — HERO
+   ============================================ */
+.hero-section{ padding: 70px 0 40px; position:relative; overflow:hidden; }
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items:center;
+}
+.hero-hii{ font-size: 1.6rem; margin-bottom:2px; color: var(--pink-deep); }
+.hero-name{
+  font-size: clamp(3.2rem, 7vw, 5.6rem);
+  font-weight:900;
+  letter-spacing:-0.01em;
+}
+.orange-flower{ color: var(--orange); display:inline-block; transform: rotate(12deg); }
+.hero-role{
+  font-family: var(--font-display);
+  font-weight:600;
+  font-size: 1.35rem;
+  margin-top: 14px;
+  color: var(--green-deep);
+}
+.hero-tags{ margin-top: 22px; }
+.hero-ctas{ margin-top: 30px; display:flex; gap:14px; flex-wrap:wrap; }
+.hero-photo{ position:relative; justify-self:center; }
+.hero-photo .polaroid{ width: 340px; }
+.doodle-star{
+  position:absolute;
+  font-size: 2rem;
+  color: var(--orange);
+}
+.star1{ top:-10px; right:-6px; }
+.star2{ bottom: 20px; left:-30px; color: var(--green); font-size:1.5rem; }
+.doodle-circle{
+  position:absolute;
+  width:120px; height:120px;
+  border: 3px dashed var(--pink-deep);
+  border-radius:50%;
+  top: -40px;
+  left: -50px;
+  z-index:-1;
+}
+
+@media (max-width: 860px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-photo{ order:-1; margin-bottom: 10px; }
+  .hero-photo .polaroid{ width: 260px; }
+}
+
+/* ============================================
+   ENJOY CLOUD
+   ============================================ */
+.enjoy-section .section-title{ margin-bottom: 30px; }
+.enjoy-cloud{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 14px;
+}
+.chip.big{
+  font-size: 1.05rem;
+  padding: 16px 26px;
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* ============================================
+   SECTION TITLE / BODY (shared)
+   ============================================ */
+.section-title{
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  max-width: 720px;
+}
+.section-body{
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin-bottom: 26px;
+  opacity: 0.9;
+}
+
+/* ============================================
+   STORY TEASER (home)
+   ============================================ */
+.story-teaser-grid{
+  display:grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 50px;
+  align-items:center;
+}
+.story-teaser-photo .polaroid{ width: 300px; }
+@media (max-width: 860px){
+  .story-teaser-grid{ grid-template-columns:1fr; }
+  .story-teaser-photo{ order:-1; }
+  .story-teaser-photo .polaroid{ margin:0 auto; }
+}
+
+/* ============================================
+   WORK TEASER (home)
+   ============================================ */
+.work-teaser-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+.wt-item{
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  overflow:hidden;
+  aspect-ratio: 3/4;
+  transform: rotate(var(--r,0deg));
+  transition: transform .2s ease;
+}
+.wt-item:hover{ transform: rotate(0deg) scale(1.03); }
+.wt-item img{ width:100%; height:100%; object-fit:cover; }
+@media (max-width: 860px){
+  .work-teaser-grid{ grid-template-columns: repeat(2,1fr); }
+}
+
+/* ============================================
+   ABOUT — STORY HERO
+   ============================================ */
+.story-h1{
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  max-width: 780px;
+  margin-bottom: 18px;
+}
+
+/* ============================================
+   ABOUT — TIMELINE
+   ============================================ */
+.tl-entry{
+  display:grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 50px;
+  align-items:center;
+  padding: 46px 0;
+  border-bottom: 2px dashed rgba(36,28,20,0.2);
+}
+.tl-entry:last-child{ border-bottom:none; }
+.tl-entry.reverse{ direction: rtl; }
+.tl-entry.reverse > *{ direction: ltr; }
+.tl-photo .polaroid{ width: 280px; margin: 0 auto; }
+.flag-badge{ font-size: 2.2rem; display:inline-block; margin-bottom: 6px; }
+.tl-title{
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.tl-meta{
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  color: var(--pink-deep);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 780px){
+  .tl-entry, .tl-entry.reverse{
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 24px;
+  }
+  .tl-photo .polaroid{ width: 240px; }
+}
+
+/* ============================================
+   WORK PAGE
+   ============================================ */
+.work-hero{ padding-top: 70px; }
+.work-h1{
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight:900;
+  color: var(--paper);
+  -webkit-text-stroke: 1.5px var(--ink);
+  margin-bottom: 20px;
+}
+.client-section{ }
+.client-head{ margin-bottom: 36px; max-width: 640px; }
+.client-title{
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.client-desc{ font-size: 1.02rem; opacity:0.88; }
+
+.client-grid{
+  display:grid;
+  gap: 20px;
+}
+.grid-6{ grid-template-columns: repeat(3, 1fr); }
+.grid-8{ grid-template-columns: repeat(4, 1fr); }
+.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+.grid-1{ grid-template-columns: minmax(280px, 520px); justify-content:center; }
+
+.ci{
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  overflow:hidden;
+  transform: rotate(var(--r,0deg));
+  transition: transform .2s ease, box-shadow .2s ease;
+  background: var(--paper);
+}
+.ci:hover{ transform: rotate(0deg) translateY(-4px); box-shadow: 8px 10px 0 var(--ink); }
+.ci img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio: 4/5; }
+.grid-3 .ci img, .grid-2 .ci img, .grid-1 .ci img{ aspect-ratio: 3/4; }
+
+@media (max-width: 900px){
+  .grid-6, .grid-8{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 560px){
+  .grid-6, .grid-8, .grid-3, .grid-2{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   CONTACT PAGE
+   ============================================ */
+.contact-section{ padding-top: 70px; }
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items:center;
+}
+.contact-h1{
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight:900;
+  margin-bottom: 18px;
+}
+.contact-details{ margin-top: 30px; display:flex; flex-direction:column; gap: 14px; }
+.contact-line{
+  display:flex; align-items:center; gap: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  width: fit-content;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s ease;
+}
+.contact-line:hover{ border-color: var(--ink); }
+.contact-icon{
+  width:34px; height:34px;
+  border-radius:50%;
+  border: 2px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  background: var(--paper);
+  flex-shrink:0;
+}
+
+.contact-envelope{ position:relative; justify-self:center; }
+.envelope{
+  width: 280px; height: 190px;
+  background: var(--pink);
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  position:relative;
+  transform: rotate(-3deg);
+  display:flex; align-items:flex-end; justify-content:center;
+  padding-bottom: 22px;
+}
+.envelope-flap{
+  position:absolute;
+  top:0; left:0; right:0;
+  height:0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 95px solid var(--pink-deep);
+}
+.envelope-flap::after{
+  content:"";
+  position:absolute;
+  top: -95px; left: -140px;
+  width: 280px; height: 95px;
+  border: 2.5px solid var(--ink);
+  border-top:none;
+  border-bottom:none;
+  box-sizing:border-box;
+  pointer-events:none;
+}
+.envelope-text{
+  font-size: 1.6rem;
+  color: var(--ink);
+  z-index:2;
+}
+
+@media (max-width: 860px){
+  .contact-grid{ grid-template-columns:1fr; }
+  .contact-envelope{ order:-1; }
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.form-card{
+  max-width: 620px;
+  background: var(--paper);
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  padding: 40px;
+  border-radius: 10px;
+}
+.form-row{ margin-bottom: 20px; display:flex; flex-direction:column; gap:8px; }
+.form-row label{
+  font-family: var(--font-body);
+  font-weight:700;
+  font-size: 0.85rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.form-row input, .form-row textarea{
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--cream);
+  resize: vertical;
+}
+.form-row input:focus, .form-row textarea:focus{
+  outline: 3px dashed var(--orange);
+  outline-offset: 2px;
+}
+.form-note{
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 14px;
+}
+
+@media (max-width: 560px){
+  .form-card{ padding: 26px; }
+}
+
+/* ============================================
+   WORK — UNIFIED GALLERY GRID
+   ============================================ */
+.grid-all{
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid-all .ci img{ aspect-ratio: 4/5; }
+@media (max-width: 900px){
+  .grid-all{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px){
+  .grid-all{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================
+   VIDEO GRID
+   ============================================ */
+.videos-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+.video-item{
+  background: var(--paper);
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  transition: transform .2s ease;
+}
+.video-item:hover{
+  transform: translateY(-4px);
+}
+.video-item video{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+@media (max-width: 900px){
+  .videos-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .videos-grid{ grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   TORN DIVIDERS — NEW COLORS
+   ============================================ */
+.torn-pink-to-cream{ fill:var(--cream); }
+.torn-orange-to-cream{ fill:var(--cream); }
+
+/* torn divider fills for reordered work page */
+.torn-cream-to-pink{ fill: var(--pink); }
+.torn-pink-to-orange{ fill: var(--orange); }
+.torn-orange-to-ink{ fill: var(--ink); }
+
+
+.page{ display:none; }
+.page.active{ display:block; }
+
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a href="#" data-page="home" class="brandmark js-nav">
+      <span class="stamp">M</span>
+      <span>
+        MITALI RANA ✡
+        <span class="issue-tag">Graphic Designer</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    <nav class="navlinks" id="navLinks">
+      <a href="#" data-page="home" class="js-nav active-nav">Home</a>
+      <a href="#" data-page="story" class="js-nav">My Story</a>
+      <a href="#" data-page="work" class="js-nav">Work</a>
+      <a href="#" data-page="contact" class="js-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page active" id="page-home">
+<!-- ============ HERO ============ -->
+<section class="hero-section bg-cream">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="text-script hero-hii">Since you are here, hii — I am</p>
+      <h1 class="hero-name">Mitali<br>Rana <span class="orange-flower">✿</span></h1>
+      <p class="hero-role">Graphic Designer</p>
+      <div class="hero-tags">
+        <span class="chip" style="--r:-2deg">Branding</span>
+        <span class="chip" style="--r:1.5deg">Social Media Design</span>
+        <span class="chip" style="--r:-1deg">Video Editing</span>
+        <span class="chip" style="--r:2deg">Visual Storytelling</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#" data-page="work" class="btn js-nav">See My Work →</a>
+        <a href="#" data-page="story" class="btn alt js-nav">My Story</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="polaroid" style="--r:4deg">
+        <div class="tape"></div>
+        <img src="IMG_2481.JPG" alt="Mitali Rana portrait">
+        <p class="cap">that's me! ✿</p>
+      </div>
+      <span class="doodle-star star1">✦</span>
+      <span class="doodle-star star2">✧</span>
+      <span class="doodle-circle"></span>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-mint" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,18 L40,28 L80,10 L120,26 L160,6 L200,22 L240,4 L280,24 L320,10 L360,28 L400,14 L440,30 L480,8 L520,24 L560,4 L600,26 L640,12 L680,30 L720,8 L760,22 L800,4 L840,26 L880,10 L920,28 L960,14 L1000,30 L1040,10 L1080,24 L1120,6 L1160,26 L1200,14 L1200,40 Z"/></svg>
+
+<!-- ============ WHAT I ENJOY CREATING ============ -->
+<section class="section bg-mint enjoy-section">
+  <div class="wrap">
+    <p class="eyebrow">What I enjoy creating</p>
+    <div class="enjoy-cloud">
+      <span class="chip big" style="--r:-3deg">Branding</span>
+      <span class="chip big" style="--r:2deg">Social Media Design</span>
+      <span class="chip big" style="--r:-1.5deg">Campaign Design</span>
+      <span class="chip big" style="--r:3deg">Content Creation</span>
+      <span class="chip big" style="--r:-2deg">Creative Direction</span>
+      <span class="chip big" style="--r:1deg">Video Editing</span>
+      <span class="chip big" style="--r:-3deg">Visual Storytelling</span>
+      <span class="chip big" style="--r:2.5deg">Photography &amp; Photoshoots</span>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-mint-to-cream" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z"/></svg>
+
+<!-- ============ STORY TEASER ============ -->
+<section class="section bg-cream story-teaser">
+  <div class="wrap story-teaser-grid">
+    <div class="story-teaser-photo">
+      <div class="polaroid" style="--r:-4deg">
+        <div class="tape"></div>
+        <img src="IMG_4408.JPG" alt="Mitali in Canada, autumn">
+        <p class="cap">Canada, 2024</p>
+      </div>
+    </div>
+    <div class="story-teaser-copy">
+      <p class="eyebrow">My Story</p>
+      <h2 class="section-title">My story so far.</h2>
+      <p class="section-body">Hi, I'm Mitali. I'm a Graphic Designer who loves turning ideas into meaningful visual experiences. I did my diploma in Canada, moved back home to India, and started building a career in design.</p>
+      <a href="#" data-page="story" class="btn green js-nav">Read the full story →</a>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-pink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,18 L40,28 L80,10 L120,26 L160,6 L200,22 L240,4 L280,24 L320,10 L360,28 L400,14 L440,30 L480,8 L520,24 L560,4 L600,26 L640,12 L680,30 L720,8 L760,22 L800,4 L840,26 L880,10 L920,28 L960,14 L1000,30 L1040,10 L1080,24 L1120,6 L1160,26 L1200,14 L1200,40 Z"/></svg>
+
+<!-- ============ WORK TEASER ============ -->
+<section class="section bg-pink work-teaser">
+  <div class="wrap">
+    <p class="eyebrow">Selected Work</p>
+    <h2 class="section-title">Made creatives for more than 10 different kinds of clients.</h2>
+    <div class="work-teaser-grid">
+      <div class="wt-item" style="--r:-2deg"><img src="25.jpg" alt="Yuvaa Skin Care campaign creative"></div>
+      <div class="wt-item" style="--r:2deg"><img src="brand7.jpg" alt="House of Soho outfit content"></div>
+      <div class="wt-item" style="--r:-1.5deg"><img src="Rajesh_Kids_June_Grid_.jpg" alt="Rajesh Kids summer campaign"></div>
+      <div class="wt-item" style="--r:1.5deg"><img src="brand.jpg" alt="Shree Dinkar Furniture product creative"></div>
+    </div>
+    <a href="#" data-page="work" class="btn alt js-nav" style="margin-top:36px;">See full work →</a>
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-ink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z" style="fill:var(--ink)"/></svg>
+
+<!-- ============ FOOTER ============ -->
+</div>
+
+<div class="page" id="page-story">
+<!-- ============ STORY HERO ============ -->
+<section class="section story-hero bg-mint">
+  <div class="wrap">
+    <p class="eyebrow">My Story</p>
+    <h1 class="story-h1">A page turner in four chapters ✿</h1>
+    <p class="section-body" style="font-size:1.15rem;">Hi, I'm Mitali. I'm a Graphic Designer who loves turning ideas into meaningful visual experiences — here's the scrapbook version of how I got here.</p>
+  </div>
+</section>
+
+<svg class="torn torn-mint-to-cream" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z"/></svg>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section bg-cream timeline-section">
+  <div class="wrap">
+
+    <!-- Chapter 1 -->
+    <div class="tl-entry">
+      <div class="tl-photo">
+        <div class="polaroid" style="--r:-3deg">
+          <div class="tape"></div>
+          <img src="IMG_4159.JPG" alt="Mitali taking a photo by a lake in Canada">
+          <p class="cap">Ontario, spring</p>
+        </div>
+      </div>
+      <div class="tl-copy">
+        <span class="flag-badge">🇨🇦</span>
+        <h2 class="tl-title">The Canada Chapter</h2>
+        <p class="tl-meta">January 2023 – December 2025 · Seneca Polytechnic</p>
+        <p class="section-body">Advanced Diploma in Business Administration, majoring in Marketing — three full years of building the foundation that would later meet design head-on.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="tl-entry reverse">
+      <div class="tl-photo">
+        <div class="polaroid" style="--r:3deg">
+          <div class="tape"></div>
+          <img src="IMG_4408.JPG" alt="Mitali in autumn before returning to India">
+          <p class="cap">last autumn there</p>
+        </div>
+      </div>
+      <div class="tl-copy">
+        <span class="flag-badge">🇮🇳</span>
+        <h2 class="tl-title">Back Home</h2>
+        <p class="tl-meta">1 January 2026</p>
+        <p class="section-body">Returned to India to pursue a creative career — trading the marketing playbook for a design one.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 3 -->
+    <div class="tl-entry">
+      <div class="tl-photo">
+        <div class="polaroid" style="--r:-2deg">
+          <div class="tape"></div>
+          <img src="IMG_2493.JPG" alt="Mitali exploring an immersive art installation">
+          <p class="cap">new city, new eyes</p>
+        </div>
+      </div>
+      <div class="tl-copy">
+        <span class="flag-badge">🎨</span>
+        <h2 class="tl-title">Turning Passion into Profession</h2>
+        <p class="tl-meta">February 2026 · AdWise</p>
+        <p class="section-body">Joined AdWise as a Graphic Design Intern, and later became a full-time Graphic Designer — where passion officially became a profession.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="tl-entry reverse">
+      <div class="tl-photo">
+        <div class="polaroid" style="--r:3deg">
+          <div class="tape"></div>
+          <img src="IMG_4416.JPG" alt="Mitali surrounded by balloons at an immersive exhibit">
+          <p class="cap">side quests included</p>
+        </div>
+      </div>
+      <div class="tl-copy">
+        <span class="flag-badge">👗</span>
+        <h2 class="tl-title">Beyond My Full-Time Role</h2>
+        <p class="tl-meta">House of Soho</p>
+        <p class="section-body">Managed House of Soho from ideation and shoots to editing and social media — the full creative pipeline, start to post.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-pink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,18 L40,28 L80,10 L120,26 L160,6 L200,22 L240,4 L280,24 L320,10 L360,28 L400,14 L440,30 L480,8 L520,24 L560,4 L600,26 L640,12 L680,30 L720,8 L760,22 L800,4 L840,26 L880,10 L920,28 L960,14 L1000,30 L1040,10 L1080,24 L1120,6 L1160,26 L1200,14 L1200,40 Z"/></svg>
+
+<!-- ============ WHAT I ENJOY (mini) ============ -->
+<section class="section bg-pink">
+  <div class="wrap">
+    <p class="eyebrow">And these days, what I enjoy creating</p>
+    <div class="enjoy-cloud">
+      <span class="chip big" style="--r:-3deg; background:var(--paper);">Branding</span>
+      <span class="chip big" style="--r:2deg; background:var(--paper);">Social Media Design</span>
+      <span class="chip big" style="--r:-1.5deg; background:var(--paper);">Campaign Design</span>
+      <span class="chip big" style="--r:3deg; background:var(--paper);">Content Creation</span>
+      <span class="chip big" style="--r:-2deg; background:var(--paper);">Creative Direction</span>
+      <span class="chip big" style="--r:1deg; background:var(--paper);">Video Editing</span>
+      <span class="chip big" style="--r:-3deg; background:var(--paper);">Visual Storytelling</span>
+      <span class="chip big" style="--r:2.5deg; background:var(--paper);">Photography &amp; Photoshoots</span>
+    </div>
+    <a href="#" data-page="work" class="btn alt js-nav" style="margin-top:36px;">See it all in action →</a>
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-ink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z" style="fill:var(--ink)"/></svg>
+</div>
+
+<div class="page" id="page-work">
+<!-- ============ WORK HERO ============ -->
+<section class="section work-hero bg-orange">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--paper);"><span style="color:var(--ink)">✦</span> Selected Work</p>
+    <h1 class="work-h1">Made creatives for<br>more than 10 different<br>kinds of clients.</h1>
+    <p class="section-body" style="color:var(--paper); opacity:0.95; font-size:1.1rem;">A handful of the campaigns, socials and shoots I've worked on — from skincare to furniture to fashion to kidswear.</p>
+  </div>
+</section>
+
+<svg class="torn torn-orange-to-cream" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z"/></svg>
+
+<!-- ============ GRAPHIC WORK — IMAGE GALLERY ============ -->
+<section class="section bg-cream client-section">
+  <div class="wrap">
+    <p class="eyebrow">Graphic Work</p>
+    <h2 class="client-title">Design &amp; branding</h2>
+    <div class="client-grid grid-all">
+      <div class="ci" style="--r:-2deg"><img src="25.jpg" alt="Yuvaa Skin Care buy one get one campaign" loading="lazy"></div>
+      <div class="ci" style="--r:1.5deg"><img src="brand7.jpg" alt="House of Soho outfit content, floral background" loading="lazy"></div>
+      <div class="ci" style="--r:-1deg"><img src="Rajesh_Kids_June_Grid_.jpg" alt="Rajesh Kids June content grid" loading="lazy"></div>
+      <div class="ci" style="--r:2deg"><img src="brand.jpg" alt="Shree Dinkar Furniture armchair product creative" loading="lazy"></div>
+      <div class="ci" style="--r:-2.5deg"><img src="brand6.jpg" alt="Outfit inspired by album cover creative" loading="lazy"></div>
+      <div class="ci" style="--r:1deg"><img src="1.jpg" alt="Yuvaa morning skincare routine creative" loading="lazy"></div>
+      <div class="ci" style="--r:-1.5deg"><img src="Rajesh_Kids_grid_April.jpg" alt="Rajesh Kids April content grid" loading="lazy"></div>
+      <div class="ci" style="--r:2.5deg"><img src="brand2.jpg" alt="How would you style House of Soho top" loading="lazy"></div>
+      <div class="ci" style="--r:-1deg"><img src="19.jpg" alt="Yuvaa Skin Care campaign creative" loading="lazy"></div>
+      <div class="ci" style="--r:1.5deg"><img src="2.jpg" alt="Basic skincare for men checklist creative" loading="lazy"></div>
+      <div class="ci" style="--r:-2deg"><img src="brand4.jpg" alt="House of Soho street style content" loading="lazy"></div>
+      <div class="ci" style="--r:2deg"><img src="SDF_WSP_Images.jpg" alt="Shree Dinkar Furniture luxury living room creative" loading="lazy"></div>
+      <div class="ci" style="--r:-1.5deg"><img src="brand3.jpg" alt="Behind the scenes content shoot" loading="lazy"></div>
+      <div class="ci" style="--r:1deg"><img src="Rajesh_kids_May_Grid.jpg" alt="Rajesh Kids May content grid" loading="lazy"></div>
+      <div class="ci" style="--r:-2deg"><img src="17.jpg" alt="Yuvaa three step routine explainer" loading="lazy"></div>
+      <div class="ci" style="--r:2deg"><img src="brand8.jpg" alt="Which vibe are you styling content" loading="lazy"></div>
+      <div class="ci" style="--r:-1deg"><img src="13.jpg" alt="Yuvaa sunscreen reviews creative" loading="lazy"></div>
+      <div class="ci" style="--r:1.5deg"><img src="brand5.jpg" alt="House of Soho outdoor outfit shoot" loading="lazy"></div>
+      <div class="ci" style="--r:-2.5deg"><img src="14.jpg" alt="Best skincare products search creative" loading="lazy"></div>
+      <div class="ci" style="--r:2deg"><img src="23.jpg" alt="Yuvaa Skin Care campaign creative" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-cream-to-pink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,18 L40,28 L80,10 L120,26 L160,6 L200,22 L240,4 L280,24 L320,10 L360,28 L400,14 L440,30 L480,8 L520,24 L560,4 L600,26 L640,12 L680,30 L720,8 L760,22 L800,4 L840,26 L880,10 L920,28 L960,14 L1000,30 L1040,10 L1080,24 L1120,6 L1160,26 L1200,14 L1200,40 Z"/></svg>
+
+<!-- ============ VIDEO EDITING SECTION ============ -->
+<section class="section bg-pink client-section">
+  <div class="wrap">
+    <p class="eyebrow">Editing</p>
+    <h2 class="client-title">Video editing work — 6 pieces</h2>
+    <div class="videos-grid">
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5323.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_3909.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5322.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_3984.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_4955.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5324.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-pink-to-orange" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z" style="fill:var(--orange)"/></svg>
+
+<!-- ============ AI PROJECTS SECTION ============ -->
+<section class="section bg-orange client-section">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--paper);"><span style="color:var(--ink)">✦</span> AI</p>
+    <h2 class="client-title" style="color:var(--paper);">Some of the AI videos I made — 9 pieces</h2>
+    <div class="videos-grid">
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_3919.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5327.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5325.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5330.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5326.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_4830.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5329.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5022.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls preload="metadata" style="width:100%; height:auto; border: 2.5px solid var(--ink); border-radius: 8px;">
+          <source src="IMG_5092.mp4" type="video/mp4">
+          Your browser doesn't support video playback.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-orange-to-ink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 L0,18 L40,28 L80,10 L120,26 L160,6 L200,22 L240,4 L280,24 L320,10 L360,28 L400,14 L440,30 L480,8 L520,24 L560,4 L600,26 L640,12 L680,30 L720,8 L760,22 L800,4 L840,26 L880,10 L920,28 L960,14 L1000,30 L1040,10 L1080,24 L1120,6 L1160,26 L1200,14 L1200,40 Z" style="fill:var(--ink)"/></svg>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="section bg-ink" style="text-align:center;">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center; color:var(--pink);">✦ and that's a wrap</p>
+    <h2 class="section-title" style="margin:0 auto 26px; color:var(--paper);">Got a project brewing? I'd love to hear about it.</h2>
+    <a href="#" data-page="contact" class="btn js-nav">Get in touch →</a>
+  </div>
+</section>
+</div>
+
+<div class="page" id="page-contact">
+<!-- ============ CONTACT HERO ============ -->
+<section class="section contact-section bg-mint">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow">Get in touch</p>
+      <h1 class="contact-h1">Got an idea? <span class="text-script">Let's talk ✿</span></h1>
+      <p class="section-body" style="font-size:1.08rem;">Brand refresh, a campaign, a reel that needs to feel right — whatever it is, email me.</p>
+
+      <div class="contact-details">
+        <a href="mailto:mitalirana2412@gmail.com" class="contact-line">
+          <span class="contact-icon">✉</span>
+          <span>mitalirana2412@gmail.com</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-envelope">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <p class="envelope-text text-script">say hello!</p>
+      </div>
+      <span class="doodle-star star1">✦</span>
+      <span class="doodle-star star2">✧</span>
+    </div>
+  </div>
+</section>
+
+<svg class="torn torn-mint-to-cream" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z"/></svg>
+
+<svg class="torn torn-cream-to-ink" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 L0,20 L40,10 L80,25 L120,5 L160,22 L200,8 L240,28 L280,12 L320,20 L360,6 L400,24 L440,14 L480,30 L520,10 L560,22 L600,4 L640,26 L680,16 L720,8 L760,28 L800,12 L840,20 L880,6 L920,24 L960,14 L1000,30 L1040,10 L1080,22 L1120,8 L1160,26 L1200,16 L1200,0 Z" style="fill:var(--ink)"/></svg>
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <h3 class="text-script">Let's make something ✿</h3>
+      <p style="max-width:360px; opacity:0.85;">Branding, social media design, video editing &amp; visual storytelling — always up for the next idea.</p>
+    </div>
+    <nav class="foot-links">
+      <a href="#" data-page="home" class="js-nav">Home</a>
+      <a href="#" data-page="story" class="js-nav">My Story</a>
+      <a href="#" data-page="work" class="js-nav">Work</a>
+      <a href="#" data-page="contact" class="js-nav">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Mitali Rana</span>
+    <span>Made with ✿ in India</span>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    var target = document.getElementById('page-' + name);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('#navLinks a').forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('data-page') === name);
+    });
+    window.scrollTo({top:0, behavior:'instant'});
+    links.classList.remove('open');
+  }
+
+  document.querySelectorAll('.js-nav').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      showPage(a.getAttribute('data-page'));
+    });
+  });
+});
+</script>
+
+</body>
+</html>
